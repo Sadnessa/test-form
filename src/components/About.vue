@@ -11,9 +11,10 @@
     <p>Номер телефона*</p>
     <FormInput></FormInput>
     <p>Пол</p>
+    Женский <input type="radio" name="rad" value="female"/> Мужской<input type="radio" name="rad" value="male"/>
     <p>Группа клиентов*.</p>
     <p>Лечащий врач.</p>
-    <FormSelector :doctors="doc"></FormSelector>
+    <FormSelector :items="doctors"></FormSelector>
     <label><input type="checkbox" />Не отправлять СМС.</label>
   </div>
 </template>
@@ -30,7 +31,7 @@ export default {
 
   data() {
     return {
-      doc: ["Иванов", "Захаров", "Чернышова"],
+      doctors: ["Иванов", "Захаров", "Чернышова"],
     };
   },
 };

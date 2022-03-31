@@ -11,7 +11,7 @@
       </template>
     </FormInput>
     <div class="select" v-if="isVisible">
-      <div class="select__item" v-for="i in doctors" :key="i">
+      <div class="select__item" v-for="i in items" :key="i">
         {{ i }}
       </div>
     </div>
@@ -32,7 +32,7 @@ export default {
   },
 
   props: {
-    doctors: {
+    items: {
       type: Array,
     },
   },
