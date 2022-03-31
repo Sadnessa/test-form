@@ -1,24 +1,24 @@
 <template>
   <FormCard>
     fdfd
-    <FormInput></FormInput>
-    <FormSelector></FormSelector>
-    <FormButton>fdfd</FormButton>
+    <About></About>
+    <Address></Address>
+    <Passport></Passport>
   </FormCard>
 </template>
 
 <script>
-import FormCard from "./components/base/FormCard.vue";
-import FormInput from "./components/base/FormInput.vue";
-import FormSelector from "./components/base/FormSelector.vue"
-import FormButton from "./components/base/FormButton.vue";
+import FormCard from "./components/base/FormCard.vue"
+import About from "./components/About.vue"
+import Address from "./components/Address.vue"
+import Passport from "./components/Passport.vue"
 
 export default {
   components: {
     FormCard,
-    FormInput,
-    FormButton,
-    FormSelector,
+    About,
+    Address,
+    Passport,
   },
 };
 </script>
