@@ -2,9 +2,12 @@
   <div class="selector">
     <FormInput>
       <template #icon>
-        <span class="material-icons-round" @click="clickSelect">
-          {{ icon }}
-        </span>
+        <div class="icon" @click="clickSelect">
+          <span class="material-icons-round" v-if="isVisible">
+            expand_less
+          </span>
+          <span class="material-icons-round" v-else> expand_more </span>
+        </div>
       </template>
     </FormInput>
     <div class="select" v-if="isVisible">
@@ -29,10 +32,6 @@ export default {
   },
 
   props: {
-    icon: {
-      type: String,
-    },
-
     doctors: {
       type: Array,
     },
@@ -66,6 +65,7 @@ export default {
 
     &__item {
       border-bottom: solid 2px rgb(206, 206, 206);
+      padding-top: 6px;
     }
   }
 }

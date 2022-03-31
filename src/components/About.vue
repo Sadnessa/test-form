@@ -13,7 +13,7 @@
     <p>Пол</p>
     <p>Группа клиентов*.</p>
     <p>Лечащий врач.</p>
-    <FormSelector icon="expand_more" :doctors="doc"></FormSelector>
+    <FormSelector :doctors="doc"></FormSelector>
    <p> Не отправлять СМС.</p>
   </div>
 </template>
