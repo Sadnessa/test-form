@@ -1,9 +1,16 @@
 <template>
-  <FormInput>
-    <template #icon>
-      <span class="material-icons-round"> {{ icon }} </span>
-    </template>
-  </FormInput>
+  <div class="selector">
+    <FormInput>
+      <template #icon>
+        <span class="material-icons-round"> {{ icon }} </span>
+      </template>
+    </FormInput>
+    <div class="select">
+      <div class="select__item" v-for="i in doctors" :key=i>
+        {{ i }}
+        </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -17,13 +24,27 @@ export default {
     icon: {
       type: String,
     },
+
+    doctors: {
+      type: Array,
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
-span {
-  user-select: none;
-  cursor: pointer;
+.selector {
+  position: relative;
+
+  span {
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .select {
+    position: absolute;
+    width: 100%;
+    background: white;
+  }
 }
 </style>

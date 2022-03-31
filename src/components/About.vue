@@ -13,7 +13,7 @@
     <p>Пол</p>
     <p>Группа клиентов*.</p>
     <p>Лечащий врач.</p>
-    <FormSelector icon="expand_more"></FormSelector>
+    <FormSelector icon="expand_more" :doctors="doc"></FormSelector>
    <p> Не отправлять СМС.</p>
   </div>
 </template>
@@ -21,10 +21,17 @@
 <script>
 import FormInput from "./base/FormInput.vue";
 import FormSelector from "./base/FormSelector.vue";
+
 export default {
   components: {
     FormInput,
     FormSelector,
   },
+
+  data() {
+    return  {
+      doc: ["Иванов", "Захаров", "Чернышова"]
+    }
+  }
 };
 </script>
