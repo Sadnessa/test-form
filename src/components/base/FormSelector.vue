@@ -2,13 +2,15 @@
   <div class="selector">
     <FormInput>
       <template #icon>
-        <span class="material-icons-round"> {{ icon }} </span>
+        <span class="material-icons-round" @click="clickSelect">
+          {{ icon }}
+        </span>
       </template>
     </FormInput>
-    <div class="select">
-      <div class="select__item" v-for="i in doctors" :key=i>
+    <div class="select" v-if="isVisible">
+      <div class="select__item" v-for="i in doctors" :key="i">
         {{ i }}
-        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -20,6 +22,12 @@ export default {
     FormInput,
   },
 
+  data() {
+    return {
+      isVisible: false,
+    };
+  },
+
   props: {
     icon: {
       type: String,
@@ -27,7 +35,17 @@ export default {
 
     doctors: {
       type: Array,
-    }
+    },
+  },
+
+  methods: {
+    clickSelect() {
+      if (this.isVisible === false) {
+        this.isVisible = true;
+      } else {
+        this.isVisible = false;
+      }
+    },
   },
 };
 </script>
@@ -45,6 +63,10 @@ export default {
     position: absolute;
     width: 100%;
     background: white;
+
+    &__item {
+      border-bottom: solid 2px rgb(206, 206, 206);
+    }
   }
 }
 </style>
