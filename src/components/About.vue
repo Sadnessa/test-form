@@ -14,7 +14,7 @@
     <p>Группа клиентов*.</p>
     <p>Лечащий врач.</p>
     <FormSelector :doctors="doc"></FormSelector>
-   <p> Не отправлять СМС.</p>
+    <label><input type="checkbox" />Не отправлять СМС.</label>
   </div>
 </template>
 
@@ -29,9 +29,15 @@ export default {
   },
 
   data() {
-    return  {
-      doc: ["Иванов", "Захаров", "Чернышова"]
-    }
-  }
+    return {
+      doc: ["Иванов", "Захаров", "Чернышова"],
+    };
+  },
 };
 </script>
+
+<style lang="scss" scoped>
+.about {
+  box-sizing: border-box;
+}
+</style>

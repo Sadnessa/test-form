@@ -52,6 +52,8 @@ body {
   .scroll {
     height: 100%;
     overflow-y: auto;
+    padding: 8px;
+    box-sizing: border-box;
     // scrollbar-gutter: stable;
   }
 }

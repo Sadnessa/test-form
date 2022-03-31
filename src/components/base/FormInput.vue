@@ -8,7 +8,6 @@
 <style lang="scss" scoped>
 .input {
   display: flex;
-  align-items: center;
   padding: 4px;
   background: rgb(212, 212, 212);
   border-radius: 4px;
