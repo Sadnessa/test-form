@@ -12,7 +12,7 @@
     </FormInput>
     <div class="select" v-if="isVisible">
       <div class="select__item" v-for="i in items" :key="i">
-        {{ i }}
+        <p>{{ i }}</p>
       </div>
     </div>
   </div>
@@ -60,6 +60,7 @@ export default {
     align-items: center;
     user-select: none;
     cursor: pointer;
+    font-size: 22px;
   }
 
   .select {
@@ -67,10 +68,26 @@ export default {
     top: 32px;
     width: 100%;
     background: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
     &__item {
-      border-bottom: solid 2px rgb(206, 206, 206);
       padding-top: 6px;
+      transition: 0.2s all ease-in-out;
+      cursor: pointer;
+      border-bottom: solid 2px rgb(206, 206, 206);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background: rgba(192, 192, 192, 0.219);
+      }
+
+      p {
+        margin: 0px;
+        padding: 2px 6px;
+      }
     }
   }
 }
