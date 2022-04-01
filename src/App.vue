@@ -9,8 +9,18 @@
       <About v-if="currentForm == 0"></About>
       <Address v-if="currentForm == 1"></Address>
       <Passport v-if="currentForm == 2"></Passport>
-      <button @click="prevButton" v-if="this.currentForm >= 1">Prev</button>
-      <button @click="nextButton" v-if="this.currentForm <= 1">Next</button>
+    </div>
+    <div class="btns">
+      <div class="btns__wrapper">
+        <FormButton @click="prevButton" v-if="this.currentForm >= 1">
+          Назад
+        </FormButton>
+      </div>
+      <div class="btns__wrapper">
+        <FormButton @click="nextButton" v-if="this.currentForm <= 1">
+          Далее
+        </FormButton>
+      </div>
     </div>
   </FormCard>
 </template>
@@ -20,6 +30,7 @@ import FormCard from "./components/base/FormCard.vue";
 import About from "./components/About.vue";
 import Address from "./components/Address.vue";
 import Passport from "./components/Passport.vue";
+import FormButton from "./components/base/FormButton.vue";
 
 export default {
   components: {
@@ -27,6 +38,7 @@ export default {
     About,
     Address,
     Passport,
+    FormButton,
   },
 
   data() {
@@ -56,7 +68,8 @@ export default {
 
 <style>
 body {
-  background: rgb(212, 212, 212);
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
   margin: 0px;
 }
 
@@ -95,6 +108,19 @@ p {
     flex-grow: 1;
     padding: 8px;
     box-sizing: border-box;
+  }
+
+  .btns {
+    display: flex;
+
+    &__wrapper {
+      width: 100%;
+      margin-right: 10px;
+
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
   }
 }
 </style>
