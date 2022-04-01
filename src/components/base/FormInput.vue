@@ -9,7 +9,7 @@
 .input {
   display: flex;
   padding: 4px;
-  background: rgb(212, 212, 212);
+  background: rgb(224, 224, 224);
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
