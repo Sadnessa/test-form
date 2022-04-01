@@ -52,8 +52,8 @@ export default {
 <style lang="scss" scoped>
 .selector {
   position: relative;
-  z-index: 0;
-
+  z-index: 1;
+  
   span {
     display: flex;
     justify-content: center;
@@ -67,7 +67,6 @@ export default {
     top: 32px;
     width: 100%;
     background: white;
-    z-index: 1;
 
     &__item {
       border-bottom: solid 2px rgb(206, 206, 206);

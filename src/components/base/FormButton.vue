@@ -39,6 +39,7 @@ button {
   background: #a57bff;
   color: white;
   font-weight: 700;
+  z-index: 0;
 
   &:after {
     position: absolute;
