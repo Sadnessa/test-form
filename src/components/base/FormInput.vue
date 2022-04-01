@@ -13,6 +13,7 @@
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
+  margin-bottom: 12px;
 
   input {
     width: 100%;
