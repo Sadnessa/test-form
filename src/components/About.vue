@@ -1,20 +1,20 @@
 <template>
   <div class="about">
     <p>Фамилия*</p>
-    <FormInput></FormInput>
+    <FormInput v-model="modelValue.lastName"></FormInput>
     <p>Имя*</p>
-    <FormInput></FormInput>
+    <FormInput v-model="modelValue.firstName"></FormInput>
     <p>Отчество</p>
-    <FormInput></FormInput>
+    <FormInput v-model="modelValue.patronymic"></FormInput>
     <p>Дата рождения*</p>
-    <FormInput></FormInput>
+    <FormInput v-model="modelValue.birth"></FormInput>
     <p>Номер телефона*</p>
-    <FormInput></FormInput>
+    <FormInput v-model="modelValue.phone"></FormInput>
     <p>Пол</p>
     Женский <input type="radio" name="rad" value="female"/> Мужской<input type="radio" name="rad" value="male"/>
     <p>Группа клиентов*.</p>
     <p>Лечащий врач.</p>
-    <FormSelector :items="doctors"></FormSelector>
+    <FormSelector :items="doctors" v-model="modelValue.doctor"></FormSelector>
     <label><input type="checkbox" />Не отправлять СМС.</label>
   </div>
 </template>
@@ -28,6 +28,16 @@ export default {
     FormInput,
     FormSelector,
   },
+
+  props: {
+    modelValue: {
+     type: Object,
+    }
+  },
+
+  emits: [
+
+  ],
 
   data() {
     return {

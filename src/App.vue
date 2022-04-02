@@ -6,9 +6,9 @@
       </div>
     </div>
     <div class="content">
-      <About v-if="currentForm == 0"></About>
-      <Address v-if="currentForm == 1"></Address>
-      <Passport v-if="currentForm == 2"></Passport>
+      <About v-if="currentForm == 0" v-model="about"></About>
+      <Address v-if="currentForm == 1" v-model="address"></Address>
+      <Passport v-if="currentForm == 2" v-model="passport"></Passport>
     </div>
     <div class="btns">
       <div class="btns__wrapper">
@@ -45,6 +45,32 @@ export default {
     return {
       forms: [1, 2, 3],
       currentForm: 0,
+      about: {
+        lastName: "",
+        firstName: "",
+        patronymic: "",
+        birth: "",
+        phone: "",
+        gender: "",
+        client: "",
+        doctor: "",
+        sms: false,
+      },
+      address: {
+        postMail: "",
+        country: "",
+        region: "",
+        city: "",
+        street: "",
+        building: "",
+      },
+      passport: {
+        document: "",
+        series: "",
+        no: "",
+        authory: "",
+        date: "",
+      },
     };
   },
 
