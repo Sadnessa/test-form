@@ -1,6 +1,6 @@
 <template>
   <div class="input">
-    <input v-model="modelValue" @update:modelValue="onInput" />
+    <input :value="modelValue" @input="onInput" :readonly="readOnly"/>
     <slot name="icon"></slot>
   </div>
 </template>
@@ -8,6 +8,11 @@
 <script>
 export default {
   props: {
+    readOnly: {
+      type: Boolean,
+      default: false,
+    },
+
     modelValue: {
       type: String,
     }
@@ -15,7 +20,7 @@ export default {
 
   methods: {
     onInput(event) {
-      this.$emit("update:modelValue", event)
+      this.$emit("update:modelValue", event.target.value)
     }
   }
 }

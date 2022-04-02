@@ -1,6 +1,6 @@
 <template>
   <div class="selector">
-    <FormInput @click="clickSelect" :modelValue="computedInput">
+    <FormInput readOnly @click="clickSelect" :modelValue="computedInput">
       <template #icon>
         <div class="icon">
           <span class="material-icons-round" v-if="isVisible">
@@ -11,8 +11,13 @@
       </template>
     </FormInput>
     <div class="select" v-if="isVisible">
-      <div class="select__item" v-for="i in items" :key="i" @click="selectedItem = i">
-        <p>{{ i }}</p>
+      <div
+        class="select__item"
+        v-for="item in items"
+        :key="item"
+        @click="selectedItem = item"
+      >
+        <p>{{ item }}</p>
       </div>
     </div>
   </div>
@@ -46,11 +51,17 @@ export default {
 
   computed: {
     computedInput() {
-      if(this.selectedItem == null) {
-        return this.selectedItem = "Выберите вариант ответа"
+      if (this.selectedItem == null) {
+        return "Выберите вариант ответа";
       }
-      return this.selectedItem
-    }
+      return this.selectedItem;
+    },
+  },
+
+  watch: {
+    selectedItem(newValue) {
+      this.$emit("update:modelValue", newValue);
+    },
   },
 };
 </script>
