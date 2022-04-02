@@ -13,6 +13,7 @@
     <p>Пол</p>
     Женский <input type="radio" name="rad" value="female"/> Мужской<input type="radio" name="rad" value="male"/>
     <p>Группа клиентов*.</p>
+    <FormSelector multiple :items="clients" v-model="modelValue.client"></FormSelector>
     <p>Лечащий врач.</p>
     <FormSelector :items="doctors" v-model="modelValue.doctor"></FormSelector>
     <label><input type="checkbox" />Не отправлять СМС.</label>
@@ -42,6 +43,7 @@ export default {
   data() {
     return {
       doctors: ["Иванов", "Захаров", "Чернышова"],
+      clients: ["VIP", "Проблемные", "ОМС"]
     };
   },
 };
