@@ -14,7 +14,7 @@
     Женский <input type="radio" name="rad" value="female"/> Мужской<input type="radio" name="rad" value="male"/>
     <p>Группа клиентов*.</p>
     <p>Лечащий врач.</p>
-    <FormSelector :items="doctors" v-model="modelValue.doctor"></FormSelector>
+    <FormSelector multiple :items="doctors" v-model="modelValue.doctor"></FormSelector>
     <label><input type="checkbox" />Не отправлять СМС.</label>
   </div>
 </template>

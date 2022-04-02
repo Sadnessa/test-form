@@ -1,6 +1,6 @@
 <template>
   <div class="selector">
-    <FormInput readOnly @click="clickSelect" :modelValue="computedInput">
+    <FormInput readOnly @click="clickSelect" :modelValue="computedInputText">
       <template #icon>
         <div class="icon">
           <span class="material-icons-round" v-if="isVisible">
@@ -15,8 +15,13 @@
         class="select__item"
         v-for="item in items"
         :key="item"
-        @click="selectedItem = item"
+        @click="onItemClick(item)"
       >
+        <input
+          type="checkbox"
+          v-if="multiple"
+          :checked="isSelectedItem(item)"
+        />
         <p>{{ item }}</p>
       </div>
     </div>
@@ -41,19 +46,53 @@ export default {
     items: {
       type: Array,
     },
+
+    multiple: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   methods: {
     clickSelect() {
       this.isVisible = !this.isVisible;
     },
+
+    onItemClick(item) {
+      if (!this.multiple) {
+        this.selectedItem = item;
+        return;
+      }
+
+      if (this.selectedItem == null) {
+        this.selectedItem = [];
+      }
+
+      if (this.isSelectedItem(item)) {
+        this.selectedItem = this.selectedItem.filter((i) => i !== item);
+        return;
+      }
+
+      this.selectedItem.push(item);
+    },
+
+    isSelectedItem(item) {
+      if (Array.isArray(this.selectedItem)) {
+        return this.selectedItem.includes(item);
+      }
+    },
   },
 
   computed: {
-    computedInput() {
-      if (this.selectedItem == null) {
+    computedInputText() {
+      if (this.selectedItem == null || this.selectedItem.length == 0) {
         return "Выберите вариант ответа";
       }
+
+      if (Array.isArray(this.selectedItem)) {
+        return this.selectedItem.join(", ");
+      }
+
       return this.selectedItem;
     },
   },
@@ -88,9 +127,11 @@ export default {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
     &__item {
+      display: flex;
       padding-top: 6px;
       transition: 0.2s all ease-in-out;
       cursor: pointer;
+      user-select: none;
       border-bottom: solid 2px rgb(206, 206, 206);
 
       &:last-child {
