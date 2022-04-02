@@ -1,6 +1,6 @@
 <template>
   <div class="selector">
-    <FormInput @click="clickSelect">
+    <FormInput @click="clickSelect" :modelValue="computedInput">
       <template #icon>
         <div class="icon">
           <span class="material-icons-round" v-if="isVisible">
@@ -11,12 +11,12 @@
       </template>
     </FormInput>
     <div class="select" v-if="isVisible">
-      <div class="select__item" v-for="i in items" :key="i">
+      <div class="select__item" v-for="i in items" :key="i" @click="selectedItem = i">
         <p>{{ i }}</p>
       </div>
     </div>
   </div>
-</template>
+</template> 
 
 <script>
 import FormInput from "./FormInput.vue";
@@ -28,6 +28,7 @@ export default {
   data() {
     return {
       isVisible: false,
+      selectedItem: null,
     };
   },
 
@@ -41,6 +42,15 @@ export default {
     clickSelect() {
       this.isVisible = !this.isVisible;
     },
+  },
+
+  computed: {
+    computedInput() {
+      if(this.selectedItem == null) {
+        return this.selectedItem = "Выберите вариант ответа"
+      }
+      return this.selectedItem
+    }
   },
 };
 </script>

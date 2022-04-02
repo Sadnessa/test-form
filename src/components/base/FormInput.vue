@@ -1,9 +1,25 @@
 <template>
   <div class="input">
-    <input />
+    <input v-model="modelValue" @update:modelValue="onInput" />
     <slot name="icon"></slot>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    modelValue: {
+      type: String,
+    }
+  },
+
+  methods: {
+    onInput(event) {
+      this.$emit("update:modelValue", event)
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .input {
