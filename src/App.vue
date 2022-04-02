@@ -120,9 +120,7 @@ p {
   flex-direction: column;
   width: 100%;
   max-width: 400px;
-  height: 100%;
-  max-height: 600px;
-  overflow: hidden;
+  min-height: 650px;
 
   .view {
     display: flex;

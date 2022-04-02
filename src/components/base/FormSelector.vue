@@ -108,7 +108,6 @@ export default {
 <style lang="scss" scoped>
 .selector {
   position: relative;
-  z-index: 1;
 
   span {
     display: flex;
@@ -121,6 +120,7 @@ export default {
 
   .select {
     position: absolute;
+    z-index: 1;
     top: 32px;
     width: 100%;
     background: white;
