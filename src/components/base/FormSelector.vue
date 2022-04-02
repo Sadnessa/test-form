@@ -136,6 +136,7 @@ export default {
 
       &:last-child {
         border-bottom: none;
+        padding-bottom: 6px;
       }
 
       &:hover {
