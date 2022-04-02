@@ -11,12 +11,19 @@
     <p>Номер телефона*</p>
     <FormInput v-model="modelValue.phone"></FormInput>
     <p>Пол</p>
-    Женский <input type="radio" name="rad" value="female"/> Мужской<input type="radio" name="rad" value="male"/>
+    <div class="about__gender">
+      <label>Женский<input v-model="modelValue.gender" type="radio" name="rad" value="Женский" /></label>
+      <label>Мужской <input v-model="modelValue.gender" type="radio" name="rad" value="Мужской" /></label>
+    </div>
     <p>Группа клиентов*.</p>
-    <FormSelector multiple :items="clients" v-model="modelValue.client"></FormSelector>
+    <FormSelector
+      multiple
+      :items="clients"
+      v-model="modelValue.client"
+    ></FormSelector>
     <p>Лечащий врач.</p>
     <FormSelector :items="doctors" v-model="modelValue.doctor"></FormSelector>
-    <label><input type="checkbox" />Не отправлять СМС.</label>
+    <label><input type="checkbox" v-model="modelValue.sms" />Не отправлять СМС.</label>
   </div>
 </template>
 
@@ -32,18 +39,16 @@ export default {
 
   props: {
     modelValue: {
-     type: Object,
-    }
+      type: Object,
+    },
   },
 
-  emits: [
-
-  ],
+  emits: [],
 
   data() {
     return {
       doctors: ["Иванов", "Захаров", "Чернышова"],
-      clients: ["VIP", "Проблемные", "ОМС"]
+      clients: ["VIP", "Проблемные", "ОМС"],
     };
   },
 };
@@ -52,5 +57,13 @@ export default {
 <style lang="scss" scoped>
 .about {
   box-sizing: border-box;
+
+  &__gender {
+    display: flex;
+    & > * {
+      width: 50%;
+    }
+    margin-bottom: 12px;
+  }
 }
 </style>
