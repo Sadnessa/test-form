@@ -1,8 +1,8 @@
 <template>
   <div class="selector">
-    <FormInput>
+    <FormInput @click="clickSelect">
       <template #icon>
-        <div class="icon" @click="clickSelect">
+        <div class="icon">
           <span class="material-icons-round" v-if="isVisible">
             expand_less
           </span>
