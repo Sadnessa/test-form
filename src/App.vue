@@ -92,7 +92,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 body {
   background-color: #8ec5fc;
   background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
@@ -104,7 +104,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0px 60px;
+  margin: 0px 20px;
   overflow: hidden;
 }
 
