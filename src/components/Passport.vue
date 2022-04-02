@@ -1,15 +1,15 @@
 <template>
   <div class="passport">
     <p>Тип документа</p>
-    <FormSelector :items="documents"></FormSelector>
+    <FormSelector :items="documents" v-model="modelValue.documents"></FormSelector>
     <p>Серия</p>
-    <FormInput></FormInput>
+    <FormInput v-model="modelValue.series"></FormInput>
     <p>Номер</p>
-    <FormInput></FormInput>
+    <FormInput v-model="modelValue.no"></FormInput>
     <p>Кем выдан</p>
-    <FormInput></FormInput>
+    <FormInput v-model="modelValue.authory"></FormInput>
     <p>Дата выдачи</p>
-    <FormInput></FormInput>
+    <FormInput v-model="modelValue.date"></FormInput>
   </div>
 </template>
 
@@ -21,6 +21,12 @@ export default {
   components: {
     FormInput,
     FormSelector,
+  },
+
+  props: {
+    modelValue: {
+      type: Object,
+    }
   },
 
   data() {
