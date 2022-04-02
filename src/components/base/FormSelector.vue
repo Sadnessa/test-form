@@ -39,11 +39,7 @@ export default {
 
   methods: {
     clickSelect() {
-      if (this.isVisible === false) {
-        this.isVisible = true;
-      } else {
-        this.isVisible = false;
-      }
+      this.isVisible = !this.isVisible;
     },
   },
 };
@@ -53,7 +49,7 @@ export default {
 .selector {
   position: relative;
   z-index: 1;
-  
+
   span {
     display: flex;
     justify-content: center;
