@@ -5,30 +5,36 @@
         {{ i }}
       </div>
     </div>
+
     <div class="content">
       <About v-if="currentForm == 0" v-model="about" :validations="v$"></About>
+
       <Address
         v-if="currentForm == 1"
         v-model="address"
         :validations="v$"
       ></Address>
+
       <Passport
         v-if="currentForm == 2"
         v-model="passport"
         :validations="v$"
       ></Passport>
     </div>
+
     <div class="btns">
       <div class="btns__wrapper">
         <FormButton @click="prevButton" v-if="this.currentForm >= 1">
           Назад
         </FormButton>
       </div>
+
       <div class="btns__wrapper" v-if="this.currentForm <= 1">
-        <FormButton @click="nextButton"> Далее </FormButton>
+        <FormButton @click="nextButton" :disabled="currentFormValidation.$invalid"> Далее </FormButton>
       </div>
+
       <div class="btns__wrapper" v-if="this.currentForm == 2">
-        <FormButton @click="nextButton"> Сохранить </FormButton>
+        <FormButton @click="nextButton" :disabled="currentFormValidation.$invalid"> Сохранить </FormButton>
       </div>
     </div>
   </FormCard>
@@ -121,6 +127,20 @@ export default {
     };
   },
 
+  computed: {
+    currentFormValidation() {
+      if(this.currentForm === 0) {
+        return this.v$.about
+      } 
+      if(this.currentForm === 1) {
+        return this.v$.address
+      }
+      if(this.currentForm === 2) {
+        return this.v$.passport
+      }
+    }
+  },
+
   methods: {
     prevButton() {
       if (this.currentForm <= 0) {
@@ -130,10 +150,14 @@ export default {
     },
 
     nextButton() {
-      if (this.currentForm >= 2) {
-        return;
-      }
-      this.currentForm++;
+      this.currentFormValidation.$validate().then((result) => {
+        if (result) {
+          if (this.currentForm >= 2) {
+            return;
+          }
+          this.currentForm++;
+        } 
+      });
     },
   },
 };

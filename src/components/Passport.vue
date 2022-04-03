@@ -3,7 +3,7 @@
     <p>Тип документа</p>
     <FormSelector
       :items="documents"
-      v-model="modelValue.documents"
+      v-model="modelValue.document"
       :v="validations.passport.document"
     ></FormSelector>
 
