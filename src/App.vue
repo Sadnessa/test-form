@@ -7,8 +7,16 @@
     </div>
     <div class="content">
       <About v-if="currentForm == 0" v-model="about" :validations="v$"></About>
-      <Address v-if="currentForm == 1" v-model="address" :validations="v$"></Address>
-      <Passport v-if="currentForm == 2" v-model="passport" :validations="v$"></Passport>
+      <Address
+        v-if="currentForm == 1"
+        v-model="address"
+        :validations="v$"
+      ></Address>
+      <Passport
+        v-if="currentForm == 2"
+        v-model="passport"
+        :validations="v$"
+      ></Passport>
     </div>
     <div class="btns">
       <div class="btns__wrapper">
@@ -16,18 +24,19 @@
           Назад
         </FormButton>
       </div>
-      <div class="btns__wrapper">
-        <FormButton @click="nextButton" v-if="this.currentForm <= 1">
-          Далее
-        </FormButton>
+      <div class="btns__wrapper" v-if="this.currentForm <= 1">
+        <FormButton @click="nextButton"> Далее </FormButton>
+      </div>
+      <div class="btns__wrapper" v-if="this.currentForm == 2">
+        <FormButton @click="nextButton"> Сохранить </FormButton>
       </div>
     </div>
   </FormCard>
 </template>
 
 <script>
-import useVuelidate from '@vuelidate/core'
-import { required } from '@vuelidate/validators'
+import useVuelidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 
 import FormCard from "./components/base/FormCard.vue";
 import About from "./components/About.vue";
@@ -44,8 +53,8 @@ export default {
     FormButton,
   },
 
-  setup () {
-    return { v$: useVuelidate() }
+  setup() {
+    return { v$: useVuelidate() };
   },
 
   data() {
