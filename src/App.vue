@@ -49,7 +49,7 @@
     </div>
   </FormCard>
   <FormModal v-if="doShowModal" v-model="doShowModal">
-    <p>Новый клиент успешно создан.</p>
+    <p>Новый клиент успешно создан</p>
   </FormModal>
 </template>
 

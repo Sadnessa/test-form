@@ -38,10 +38,16 @@ export default {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    max-width: 300px;
+    height: 100%;
+    max-height: 150px;
 
-    // button {
-    //   width: auto;
-    // }
+    button {
+      width: 100%;
+      max-width: 150px;
+      margin-top: 30px;
+    }
   }
 }
 </style>
