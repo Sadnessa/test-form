@@ -1,7 +1,12 @@
 <template>
-  <div class="input">
-    <input :value="modelValue" @input="onInput" :readonly="readOnly"/>
-    <slot name="icon"></slot>
+  <div class="input-wrapper">
+    <div class="input">
+      <input :value="modelValue" @input="onInput" :readonly="readOnly" @blur="v.$validate"/>
+      <slot name="icon"></slot>
+    </div>
+    <div class="error" v-for="error in v.$errors" :key="error.$uid">
+      {{ error.$message }}
+    </div>
   </div>
 </template>
 
@@ -15,15 +20,20 @@ export default {
 
     modelValue: {
       type: String,
-    }
+    },
+
+    v: {
+      type: Object,
+      default: {}
+    },
   },
 
   methods: {
     onInput(event) {
-      this.$emit("update:modelValue", event.target.value)
-    }
-  }
-}
+      this.$emit("update:modelValue", event.target.value);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

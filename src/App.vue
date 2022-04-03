@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="content">
-      <About v-if="currentForm == 0" v-model="about"></About>
+      <About v-if="currentForm == 0" v-model="about" :validations="v$"></About>
       <Address v-if="currentForm == 1" v-model="address"></Address>
       <Passport v-if="currentForm == 2" v-model="passport"></Passport>
     </div>
@@ -26,6 +26,9 @@
 </template>
 
 <script>
+import useVuelidate from '@vuelidate/core'
+import { required } from '@vuelidate/validators'
+
 import FormCard from "./components/base/FormCard.vue";
 import About from "./components/About.vue";
 import Address from "./components/Address.vue";
@@ -39,6 +42,10 @@ export default {
     Address,
     Passport,
     FormButton,
+  },
+
+  setup () {
+    return { v$: useVuelidate() }
   },
 
   data() {
@@ -70,6 +77,37 @@ export default {
         no: "",
         authory: "",
         date: "",
+      },
+    };
+  },
+
+  validations() {
+    return {
+      about: {
+        lastName: { required, $autoDirty: true },
+        firstName: { required },
+        patronymic: "",
+        birth: { required },
+        phone: { required },
+        gender: "",
+        client: { required },
+        doctor: "",
+        sms: false,
+      },
+      address: {
+        postMail: "",
+        country: "",
+        region: "",
+        city: { required },
+        street: "",
+        building: "",
+      },
+      passport: {
+        document: { required },
+        series: "",
+        no: "",
+        authory: "",
+        date: { required },
       },
     };
   },

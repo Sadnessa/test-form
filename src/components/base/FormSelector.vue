@@ -1,16 +1,16 @@
 <template>
   <div class="selector">
-    <FormInput readOnly @click="clickSelect" :modelValue="computedInputText">
+    <FormInput readOnly @click="clickSelect" :modelValue="computedInputText" :v="v">
       <template #icon>
         <div class="icon">
-          <span class="material-icons-round" v-if="isVisible">
+          <span class="material-icons-round" v-if="isVisible" >
             expand_less
           </span>
           <span class="material-icons-round" v-else> expand_more </span>
         </div>
       </template>
     </FormInput>
-    <div class="select" v-if="isVisible">
+    <div class="select" v-if="isVisible" >
       <div
         class="select__item"
         v-for="item in items"
@@ -51,6 +51,11 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    v: {
+      type: Object,
+      default: {},
+    }
   },
 
   methods: {
@@ -101,6 +106,12 @@ export default {
     selectedItem(newValue) {
       this.$emit("update:modelValue", newValue);
     },
+
+    isVisible(newValue) {
+      if(!newValue) {
+        this.v.$validate
+      }
+    }
   },
 };
 </script>

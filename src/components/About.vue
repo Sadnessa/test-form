@@ -1,15 +1,15 @@
 <template>
   <div class="about">
     <p>Фамилия*</p>
-    <FormInput v-model="modelValue.lastName"></FormInput>
+    <FormInput v-model="modelValue.lastName" :v="validations.about.lastName"></FormInput>
     <p>Имя*</p>
-    <FormInput v-model="modelValue.firstName"></FormInput>
+    <FormInput v-model="modelValue.firstName" :v="validations.about.firstName"></FormInput>
     <p>Отчество</p>
     <FormInput v-model="modelValue.patronymic"></FormInput>
     <p>Дата рождения*</p>
-    <FormInput v-model="modelValue.birth"></FormInput>
+    <FormInput v-model="modelValue.birth" :v="validations.about.birth"></FormInput>
     <p>Номер телефона*</p>
-    <FormInput v-model="modelValue.phone"></FormInput>
+    <FormInput v-model="modelValue.phone" :v="validations.about.phone"></FormInput>
     <p>Пол</p>
     <div class="about__gender">
       <label>Женский<input v-model="modelValue.gender" type="radio" name="rad" value="Женский" /></label>
@@ -20,6 +20,7 @@
       multiple
       :items="clients"
       v-model="modelValue.client"
+      :v="validations.about.client"
     ></FormSelector>
     <p>Лечащий врач.</p>
     <FormSelector :items="doctors" v-model="modelValue.doctor"></FormSelector>
@@ -40,6 +41,10 @@ export default {
   props: {
     modelValue: {
       type: Object,
+    },
+
+    validations: {
+
     },
   },
 
