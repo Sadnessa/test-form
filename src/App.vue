@@ -30,14 +30,27 @@
       </div>
 
       <div class="btns__wrapper" v-if="this.currentForm <= 1">
-        <FormButton @click="nextButton" :disabled="currentFormValidation.$invalid"> Далее </FormButton>
+        <FormButton
+          @click="nextButton"
+          :disabled="currentFormValidation.$invalid"
+        >
+          Далее
+        </FormButton>
       </div>
 
       <div class="btns__wrapper" v-if="this.currentForm == 2">
-        <FormButton @click="nextButton" :disabled="currentFormValidation.$invalid"> Сохранить </FormButton>
+        <FormButton
+          @click="onSave"
+          :disabled="currentFormValidation.$invalid"
+        >
+          Сохранить
+        </FormButton>
       </div>
     </div>
   </FormCard>
+  <FormModal v-if="doShowModal" v-model="doShowModal">
+    <p>Новый клиент успешно создан.</p>
+  </FormModal>
 </template>
 
 <script>
@@ -49,6 +62,7 @@ import About from "./components/About.vue";
 import Address from "./components/Address.vue";
 import Passport from "./components/Passport.vue";
 import FormButton from "./components/base/FormButton.vue";
+import FormModal from "./components/base/FormModal.vue";
 
 export default {
   components: {
@@ -57,6 +71,7 @@ export default {
     Address,
     Passport,
     FormButton,
+    FormModal,
   },
 
   setup() {
@@ -67,6 +82,7 @@ export default {
     return {
       forms: [1, 2, 3],
       currentForm: 0,
+      doShowModal: false,
       about: {
         lastName: "",
         firstName: "",
@@ -129,16 +145,16 @@ export default {
 
   computed: {
     currentFormValidation() {
-      if(this.currentForm === 0) {
-        return this.v$.about
-      } 
-      if(this.currentForm === 1) {
-        return this.v$.address
+      if (this.currentForm === 0) {
+        return this.v$.about;
       }
-      if(this.currentForm === 2) {
-        return this.v$.passport
+      if (this.currentForm === 1) {
+        return this.v$.address;
       }
-    }
+      if (this.currentForm === 2) {
+        return this.v$.passport;
+      }
+    },
   },
 
   methods: {
@@ -150,14 +166,14 @@ export default {
     },
 
     nextButton() {
-      this.currentFormValidation.$validate().then((result) => {
-        if (result) {
-          if (this.currentForm >= 2) {
-            return;
-          }
-          this.currentForm++;
-        } 
-      });
+      if (this.currentForm >= 2) {
+        return;
+      }
+      this.currentForm++;
+    },
+
+    onSave() {
+      this.doShowModal = true
     },
   },
 };
