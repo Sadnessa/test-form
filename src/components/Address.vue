@@ -7,7 +7,7 @@
     <p>Область</p>
     <FormInput v-model="modelValue.region"></FormInput>
     <p>Город</p>
-    <FormInput v-model="modelValue.city"></FormInput>
+    <FormInput v-model="modelValue.city" :v="validations.address.city"></FormInput>
     <p>Улица</p>
     <FormInput v-model="modelValue.street"></FormInput>
     <p>Дом</p>
@@ -25,7 +25,12 @@ export default {
   props: {
     modelValue: {
       type: Object,
-    }
+    },
+
+    validations: {
+      type: Object,
+      default: {},
+    },
   }
 }
 </script>

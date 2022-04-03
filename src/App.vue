@@ -7,8 +7,8 @@
     </div>
     <div class="content">
       <About v-if="currentForm == 0" v-model="about" :validations="v$"></About>
-      <Address v-if="currentForm == 1" v-model="address"></Address>
-      <Passport v-if="currentForm == 2" v-model="passport"></Passport>
+      <Address v-if="currentForm == 1" v-model="address" :validations="v$"></Address>
+      <Passport v-if="currentForm == 2" v-model="passport" :validations="v$"></Passport>
     </div>
     <div class="btns">
       <div class="btns__wrapper">
