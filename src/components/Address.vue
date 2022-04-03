@@ -1,15 +1,23 @@
 <template>
   <div class="address">
-     <p>Индекс</p>
+    <p>Индекс</p>
     <FormInput v-model="modelValue.postMail"></FormInput>
+
     <p>Страна</p>
     <FormInput v-model="modelValue.country"></FormInput>
+
     <p>Область</p>
     <FormInput v-model="modelValue.region"></FormInput>
+
     <p>Город</p>
-    <FormInput v-model="modelValue.city" :v="validations.address.city"></FormInput>
+    <FormInput
+      v-model="modelValue.city"
+      :v="validations.address.city"
+    ></FormInput>
+
     <p>Улица</p>
     <FormInput v-model="modelValue.street"></FormInput>
+
     <p>Дом</p>
     <FormInput v-model="modelValue.building"></FormInput>
   </div>
@@ -19,7 +27,7 @@
 import FormInput from "./base/FormInput.vue";
 export default {
   components: {
-    FormInput
+    FormInput,
   },
 
   props: {
@@ -31,6 +39,6 @@ export default {
       type: Object,
       default: {},
     },
-  }
-}
+  },
+};
 </script>

@@ -6,12 +6,16 @@
       v-model="modelValue.documents"
       :v="validations.passport.document"
     ></FormSelector>
+
     <p>Серия</p>
     <FormInput v-model="modelValue.series"></FormInput>
+
     <p>Номер</p>
     <FormInput v-model="modelValue.no"></FormInput>
+
     <p>Кем выдан</p>
     <FormInput v-model="modelValue.authory"></FormInput>
+    
     <p>Дата выдачи</p>
     <FormInput
       v-model="modelValue.date"
