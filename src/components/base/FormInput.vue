@@ -60,7 +60,19 @@ export default {
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
-  // margin-bottom: 12px;
+  margin-bottom: 2px;
+
+  &--error {
+    background: rgba(255, 0, 0, 0.192);
+    outline: 1px solid red;
+  }
+
+  &--ex {
+    &:focus-within {
+      background: rgba(0, 255, 21, 0.192);
+      outline: 1px solid rgb(0, 165, 36);
+    }
+  }
 
   input {
     width: 100%;
@@ -71,17 +83,6 @@ export default {
     &:focus {
       outline: none;
     }
-    &--error {
-      background: rgba(255, 0, 0, 0.192);
-      outline: 1px solid red;
-    }
-
-    &--ex {
-      &:focus-within {
-        background: rgba(0, 255, 21, 0.192);
-        outline: 1px solid rgb(0, 165, 36);
-      }
-    }
   }
 }
 
@@ -89,6 +90,8 @@ export default {
   width: 100%;
   height: 14px;
   font-size: 12px;
+  color: red;
+  font-weight: bold;
 
   .error {
     display: flex;
