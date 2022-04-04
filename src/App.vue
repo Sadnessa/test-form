@@ -59,7 +59,7 @@
 
 <script>
 import useVuelidate from "@vuelidate/core";
-import { required } from "@vuelidate/validators";
+import { required, maxLength, minLength } from "@vuelidate/validators";
 
 import FormCard from "./components/base/FormCard.vue";
 import About from "./components/About.vue";
@@ -123,7 +123,7 @@ export default {
         firstName: { required },
         patronymic: "",
         birth: { required },
-        phone: { required },
+        phone: { required, maxLength: maxLength(10), minLength: minLength(10)},
         gender: "",
         client: { required },
         doctor: "",
