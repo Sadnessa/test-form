@@ -1,7 +1,14 @@
 <template>
   <FormCard>
     <div class="view">
-      <div class="view__item" v-for="i in forms" :key="i">
+      <div
+        class="view__item"
+        v-for="i in forms"
+        :key="i"
+        :class="{ 'view__item--active': i - 1 == currentForm }"
+        @click="currentForm = i - 1"
+      >
+        <div class="indicator"></div>
         {{ i }}
       </div>
     </div>
@@ -39,10 +46,7 @@
       </div>
 
       <div class="btns__wrapper" v-if="this.currentForm == 2">
-        <FormButton
-          @click="onSave"
-          :disabled="currentFormValidation.$invalid"
-        >
+        <FormButton @click="onSave" :disabled="currentFormValidation.$invalid">
           Сохранить
         </FormButton>
       </div>
@@ -173,7 +177,7 @@ export default {
     },
 
     onSave() {
-      this.doShowModal = true
+      this.doShowModal = true;
     },
   },
 };
@@ -213,24 +217,48 @@ p {
     display: flex;
     justify-content: space-around;
     padding: 6px 0px;
-  }
 
-  .content {
-    flex-grow: 1;
-    padding: 8px;
-    box-sizing: border-box;
-  }
-
-  .btns {
-    display: flex;
-
-    &__wrapper {
+    &__item {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
       width: 100%;
-      margin-right: 10px;
+      transition: all ease-in-out 0.5s;
 
-      &:last-child {
-        margin-right: 0px;
+      .indicator {
+        height: 4px;
+        width: 100%;
+        background: #ececec;
+        border-radius: 6px 0px;
       }
+
+      &--active {
+        background: #4f69dd1c;
+
+        .indicator {
+          background: #5ca1e6;
+          background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+        }
+      }
+    }
+  }
+}
+
+.content {
+  flex-grow: 1;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.btns {
+  display: flex;
+
+  &__wrapper {
+    width: 100%;
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0px;
     }
   }
 }
