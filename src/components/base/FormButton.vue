@@ -17,7 +17,6 @@ export default {
     buttonStyle() {
       return {
         disabled: this.disabled,
-        flat: this.flat,
       };
     },
   },
