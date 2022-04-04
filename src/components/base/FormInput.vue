@@ -43,7 +43,7 @@ export default {
     computedInputClass() {
       return {
         "input--error": this.v.$invalid && this.v.$dirty,
-        "input--ex": !this.v.$error
+        "input--ex": !this.v.$error,
       };
     },
   },
@@ -78,11 +78,9 @@ export default {
 
   &--ex {
     &:focus-within {
-    background: rgba(0, 255, 21, 0.192);
-    outline: 1px solid rgb(0, 165, 36);
+      background: rgba(0, 255, 21, 0.192);
+      outline: 1px solid rgb(0, 165, 36);
+    }
   }
-  }
-
-  
 }
 </style>
