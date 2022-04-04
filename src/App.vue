@@ -216,16 +216,19 @@ p {
   .view {
     display: flex;
     justify-content: space-around;
-    padding: 6px 0px;
 
     &__item {
+      position: relative;
       display: flex;
       align-items: center;
       flex-direction: column;
       width: 100%;
       transition: all ease-in-out 0.5s;
-
+      padding: 6px 0px;
+      
       .indicator {
+        position: absolute;
+        top: 0px;
         height: 4px;
         width: 100%;
         background: #ececec;
