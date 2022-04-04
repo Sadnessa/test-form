@@ -11,11 +11,6 @@ export default {
       type: Boolean,
       default: false,
     },
-
-    flat: {
-      type: Boolean,
-      default: false,
-    },
   },
 
   computed: {
