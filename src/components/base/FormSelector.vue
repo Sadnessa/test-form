@@ -1,16 +1,21 @@
 <template>
   <div class="selector">
-    <FormInput readOnly @click="clickSelect" :modelValue="computedInputText" :v="v">
+    <FormInput
+      readOnly
+      @click="clickSelect"
+      :modelValue="computedInputText"
+      :v="v"
+    >
       <template #icon>
         <div class="icon">
-          <span class="material-icons-round" v-if="isVisible" >
+          <span class="material-icons-round" v-if="isVisible">
             expand_less
           </span>
           <span class="material-icons-round" v-else> expand_more </span>
         </div>
       </template>
     </FormInput>
-    <div class="select" v-if="isVisible" >
+    <div class="select" v-if="isVisible">
       <div
         class="select__item"
         v-for="item in items"
@@ -55,7 +60,7 @@ export default {
     v: {
       type: Object,
       default: {},
-    }
+    },
   },
 
   methods: {
@@ -108,10 +113,10 @@ export default {
     },
 
     isVisible(newValue) {
-      if(!newValue) {
-        this.v.$validate
+      if (!newValue) {
+        this.v.$validate;
       }
-    }
+    },
   },
 };
 </script>
@@ -132,26 +137,50 @@ export default {
   .select {
     position: absolute;
     z-index: 1;
-    top: 32px;
+    top: 34px;
     width: 100%;
+    padding: 4px 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    max-width: 360px;
     background: white;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
     &__item {
+      position: relative;
       display: flex;
       padding-top: 6px;
+      padding-bottom: 4px;
       transition: 0.2s all ease-in-out;
       cursor: pointer;
       user-select: none;
-      border-bottom: solid 2px rgb(206, 206, 206);
+      margin-bottom: 2px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        bottom: 0px;
+        width: 100%;
+        height: 1px;
+        background: rgb(206, 206, 206);
+      }
+
+      // &:first-child {
+      //   &:after {
+      //     height: 2px;
+      //   }
+      // }
 
       &:last-child {
-        border-bottom: none;
-        padding-bottom: 6px;
+        margin-bottom: 0px;
+        &:after {
+          height: 0px;
+        }
       }
 
       &:hover {
         background: rgba(192, 192, 192, 0.219);
+        border-radius: 6px;
       }
 
       p {
