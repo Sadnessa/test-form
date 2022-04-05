@@ -156,6 +156,10 @@ export default {
       user-select: none;
       margin-bottom: 2px;
 
+      p {
+        font-weight: 300;
+      }
+
       &:after {
         position: absolute;
         content: "";

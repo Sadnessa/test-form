@@ -108,7 +108,7 @@ export default {
     & > * {
       width: 50%;
     }
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 }
 </style>

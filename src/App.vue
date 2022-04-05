@@ -59,7 +59,7 @@
 
 <script>
 import useVuelidate from "@vuelidate/core";
-import { required, maxLength, minLength } from "@vuelidate/validators";
+import { required, maxLength, minLength, numeric } from "@vuelidate/validators";
 
 import FormCard from "./components/base/FormCard.vue";
 import About from "./components/About.vue";
@@ -119,11 +119,16 @@ export default {
   validations() {
     return {
       about: {
-        lastName: { required, $autoDirty: true },
+        lastName: { required },
         firstName: { required },
         patronymic: "",
-        birth: { required },
-        phone: { required, maxLength: maxLength(10), minLength: minLength(10)},
+        birth: { required, numeric },
+        phone: {
+          required,
+          maxLength: maxLength(10),
+          minLength: minLength(10),
+          numeric,
+        },
         gender: "",
         client: { required },
         doctor: "",
@@ -142,7 +147,7 @@ export default {
         series: "",
         no: "",
         authory: "",
-        date: { required },
+        date: { required, numeric },
       },
     };
   },
@@ -184,10 +189,13 @@ export default {
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
 body {
   background-color: #8ec5fc;
   background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
   margin: 0px;
+  font-family: "Roboto", sans-serif;
 }
 
 #app {
@@ -200,9 +208,17 @@ body {
 }
 
 p {
-  margin: 0px;
-  margin-top: 4px;
-  margin-bottom: 8px;
+  margin: 0px 6px 8px;
+  font-weight: bold;
+  font-size: 14px;
+
+  &:first-child {
+    margin-top: 4px;
+  }
+}
+
+label {
+  font-size: 14px;
 }
 </style>
 
@@ -226,7 +242,8 @@ p {
       width: 100%;
       transition: all ease-in-out 0.5s;
       padding: 6px 0px;
-      
+      cursor: pointer;
+
       .indicator {
         position: absolute;
         top: 0px;

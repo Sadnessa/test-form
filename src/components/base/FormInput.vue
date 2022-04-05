@@ -48,6 +48,19 @@ export default {
         "input--ex": !this.v.$error,
       };
     },
+
+    // computedMessage() {
+    //   if (this.v.$errors[0].$validator === "required") {
+    //     return "Это поле обязательно для ввода"
+    //   }
+    //   if (this.v.$errors[0].$validator === "minLength") {
+    //     return "lfldf"
+    //   }
+    //   if (this.v.$errors[0].$validator === "maxLength") {
+    //     return "lfldf"
+    //   }
+    //   return ""
+    // }
   },
 };
 </script>
@@ -87,14 +100,20 @@ export default {
 }
 
 .errors {
+  display: flex; 
+  justify-content: center;
   width: 100%;
-  height: 14px;
-  font-size: 12px;
+  height: 12px;
+  font-size: 10px;
   color: red;
   font-weight: bold;
 
   .error {
-    display: flex;
+    padding-right: 10px;
+
+    &:last-child {
+      padding-right: 0px;
+    }
   }
 }
 </style>
