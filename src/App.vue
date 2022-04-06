@@ -59,7 +59,7 @@
 
 <script>
 import useVuelidate from "@vuelidate/core";
-import { required, maxLength, minLength, numeric, helpers } from "@vuelidate/validators";
+import { required, maxLength, minLength, helpers } from "@vuelidate/validators";
 
 import FormCard from "./components/base/FormCard.vue";
 import About from "./components/About.vue";
@@ -68,8 +68,23 @@ import Passport from "./components/Passport.vue";
 import FormButton from "./components/base/FormButton.vue";
 import FormModal from "./components/base/FormModal.vue";
 
-const myRequired = helpers.withMessage("Поле обязательно к заполнению", required)
-const myNumeric = helpers.withMessage("Необходимо использовать цифры", numeric)
+//Custom validator
+const phoneNumber = (value) => value.startsWith("7");
+
+//Custom messages
+const myRequired = helpers.withMessage(
+  "Поле обязательно к заполнению",
+  required
+);
+const myNum = helpers.withMessage("Номер начинается с 7", phoneNumber);
+const myMaxLength = helpers.withMessage(
+  "Допустимое количество символов - 11",
+  maxLength(11)
+);
+const myMinLength = helpers.withMessage(
+  "Необходимое количество символов - 11",
+  minLength(11)
+);
 
 export default {
   components: {
@@ -124,33 +139,18 @@ export default {
       about: {
         lastName: { myRequired },
         firstName: { myRequired },
-        patronymic: "",
-        birth: { myRequired, myNumeric},
-        phone: {
-          myRequired,
-          maxLength: maxLength(10),
-          minLength: minLength(10),
-          myNumeric,
-        },
-        gender: "",
+        birth: { myRequired },
+        phone: { myRequired, myMaxLength, myMinLength, myNum },
         client: { myRequired },
-        doctor: "",
-        sms: false,
       },
       address: {
-        postMail: "",
-        country: "",
-        region: "",
         city: { myRequired },
         street: "",
         building: "",
       },
       passport: {
         document: { myRequired },
-        series: "",
-        no: "",
-        authory: "",
-        date: { myRequired, myNumeric },
+        date: { myRequired },
       },
     };
   },
