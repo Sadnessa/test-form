@@ -48,19 +48,6 @@ export default {
         "input--ex": !this.v.$error,
       };
     },
-
-    // computedMessage() {
-    //   if (this.v.$errors[0].$validator === "required") {
-    //     return "Это поле обязательно для ввода"
-    //   }
-    //   if (this.v.$errors[0].$validator === "minLength") {
-    //     return "lfldf"
-    //   }
-    //   if (this.v.$errors[0].$validator === "maxLength") {
-    //     return "lfldf"
-    //   }
-    //   return ""
-    // }
   },
 };
 </script>
@@ -76,14 +63,14 @@ export default {
   margin-bottom: 2px;
 
   &--error {
-    background: rgba(255, 0, 0, 0.192);
-    outline: 1px solid red;
+    background: rgba(255, 0, 0, 0.137);
+    outline: 1px solid rgba(253, 46, 46, 0.527);
   }
 
   &--ex {
     &:focus-within {
-      background: rgba(0, 255, 21, 0.192);
-      outline: 1px solid rgb(0, 165, 36);
+      background: rgba(0, 255, 21, 0.137);
+      outline: 1px solid rgba(76, 201, 103, 0.788);
     }
   }
 
@@ -103,9 +90,10 @@ export default {
   display: flex; 
   justify-content: center;
   width: 100%;
-  height: 12px;
+  height: 10px;
   font-size: 10px;
-  color: red;
+  padding-top: 2px;
+  color: rgba(255, 20, 20, 0.699);
   font-weight: bold;
 
   .error {
