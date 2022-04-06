@@ -199,6 +199,7 @@ body {
   background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
   margin: 0px;
   font-family: "Roboto", sans-serif;
+  color: rgba(22, 22, 22, 0.87);
 }
 
 #app {
@@ -243,7 +244,7 @@ label {
       align-items: center;
       flex-direction: column;
       width: 100%;
-      transition: all ease-in-out 0.5s;
+      transition: all ease-in-out 0.3s;
       padding: 6px 0px;
       cursor: pointer;
 
