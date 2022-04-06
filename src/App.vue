@@ -69,6 +69,7 @@ import FormButton from "./components/base/FormButton.vue";
 import FormModal from "./components/base/FormModal.vue";
 
 const myRequired = helpers.withMessage("Поле обязательно к заполнению", required)
+const myNumeric = helpers.withMessage("Необходимо использовать цифры", numeric)
 
 export default {
   components: {
@@ -124,12 +125,12 @@ export default {
         lastName: { myRequired },
         firstName: { myRequired },
         patronymic: "",
-        birth: { myRequired, numeric },
+        birth: { myRequired, myNumeric},
         phone: {
           myRequired,
           maxLength: maxLength(10),
           minLength: minLength(10),
-          numeric,
+          myNumeric,
         },
         gender: "",
         client: { myRequired },
@@ -149,7 +150,7 @@ export default {
         series: "",
         no: "",
         authory: "",
-        date: { myRequired, numeric },
+        date: { myRequired, myNumeric },
       },
     };
   },
