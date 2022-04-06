@@ -1,24 +1,24 @@
 <template>
   <div class="address">
-    <p>Индекс</p>
+    <p>Индекс:</p>
     <FormInput v-model="modelValue.postMail"></FormInput>
 
-    <p>Страна</p>
+    <p>Страна:</p>
     <FormInput v-model="modelValue.country"></FormInput>
 
-    <p>Область</p>
+    <p>Область:</p>
     <FormInput v-model="modelValue.region"></FormInput>
 
-    <p>Город</p>
+    <p>Город*:</p>
     <FormInput
       v-model="modelValue.city"
       :v="validations.address.city"
     ></FormInput>
 
-    <p>Улица</p>
+    <p>Улица:</p>
     <FormInput v-model="modelValue.street"></FormInput>
 
-    <p>Дом</p>
+    <p>Дом:</p>
     <FormInput v-model="modelValue.building"></FormInput>
   </div>
 </template>

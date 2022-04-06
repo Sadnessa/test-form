@@ -1,22 +1,22 @@
 <template>
   <div class="passport">
-    <p>Тип документа</p>
+    <p>Тип документа*:</p>
     <FormSelector
       :items="documents"
       v-model="modelValue.document"
       :v="validations.passport.document"
     ></FormSelector>
 
-    <p>Серия</p>
+    <p>Серия:</p>
     <FormInput v-model="modelValue.series"></FormInput>
 
-    <p>Номер</p>
+    <p>Номер:</p>
     <FormInput v-model="modelValue.no"></FormInput>
 
-    <p>Кем выдан</p>
+    <p>Кем выдан:</p>
     <FormInput v-model="modelValue.authory"></FormInput>
 
-    <p>Дата выдачи</p>
+    <p>Дата выдачи*:</p>
     <FormInput
       v-model="dateMask"
       :v="validations.passport.date"
