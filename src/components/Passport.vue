@@ -15,10 +15,10 @@
 
     <p>Кем выдан</p>
     <FormInput v-model="modelValue.authory"></FormInput>
-    
+
     <p>Дата выдачи</p>
     <FormInput
-      v-model="modelValue.date"
+      v-model="dateMask"
       :v="validations.passport.date"
     ></FormInput>
   </div>
@@ -27,6 +27,21 @@
 <script>
 import FormInput from "./base/FormInput.vue";
 import FormSelector from "./base/FormSelector.vue";
+
+//date mask
+function formatDate(date) {
+  return date
+    .replaceAll("/", "")
+    .split("")
+    .map((item, i) => {
+      if ((i - 1) % 2 == 0 && i < 4) {
+        return item + "/";
+      }
+      return item;
+    })
+    .slice(0, 8)
+    .join("");
+}
 
 export default {
   components: {
@@ -49,6 +64,17 @@ export default {
     return {
       documents: ["Паспорт", "Свидетельство о рождении", "Водительские права"],
     };
+  },
+
+  computed: {
+    dateMask: {
+      get() {
+        return formatDate(this.modelValue.date);
+      },
+      set(newDate) {
+        this.modelValue.date = newDate;
+      },
+    },
   },
 };
 </script>
