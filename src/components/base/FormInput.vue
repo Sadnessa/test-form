@@ -56,7 +56,7 @@ export default {
 .input {
   display: flex;
   padding: 4px;
-  background: rgb(224, 224, 224);
+  background: rgb(236, 236, 236);
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
