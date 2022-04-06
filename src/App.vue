@@ -59,7 +59,7 @@
 
 <script>
 import useVuelidate from "@vuelidate/core";
-import { required, maxLength, minLength, numeric } from "@vuelidate/validators";
+import { required, maxLength, minLength, numeric, helpers } from "@vuelidate/validators";
 
 import FormCard from "./components/base/FormCard.vue";
 import About from "./components/About.vue";
@@ -67,6 +67,8 @@ import Address from "./components/Address.vue";
 import Passport from "./components/Passport.vue";
 import FormButton from "./components/base/FormButton.vue";
 import FormModal from "./components/base/FormModal.vue";
+
+const myRequired = helpers.withMessage("Поле обязательно к заполнению", required)
 
 export default {
   components: {
@@ -119,18 +121,18 @@ export default {
   validations() {
     return {
       about: {
-        lastName: { required },
-        firstName: { required },
+        lastName: { myRequired },
+        firstName: { myRequired },
         patronymic: "",
-        birth: { required, numeric },
+        birth: { myRequired, numeric },
         phone: {
-          required,
+          myRequired,
           maxLength: maxLength(10),
           minLength: minLength(10),
           numeric,
         },
         gender: "",
-        client: { required },
+        client: { myRequired },
         doctor: "",
         sms: false,
       },
@@ -138,16 +140,16 @@ export default {
         postMail: "",
         country: "",
         region: "",
-        city: { required },
+        city: { myRequired },
         street: "",
         building: "",
       },
       passport: {
-        document: { required },
+        document: { myRequired },
         series: "",
         no: "",
         authory: "",
-        date: { required, numeric },
+        date: { myRequired, numeric },
       },
     };
   },
@@ -251,6 +253,10 @@ label {
         width: 100%;
         background: #ececec;
         border-radius: 6px 0px;
+      }
+
+      &:hover {
+        background: #4f69dd0e;
       }
 
       &--active {
