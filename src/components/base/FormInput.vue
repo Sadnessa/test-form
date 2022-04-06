@@ -79,6 +79,7 @@ export default {
     border: none;
     background: transparent;
     padding: 4px;
+    font-family: "Roboto", sans-serif;
 
     &:focus {
       outline: none;
