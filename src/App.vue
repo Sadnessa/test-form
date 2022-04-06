@@ -290,4 +290,10 @@ label {
     }
   }
 }
+
+.modal__window {
+  p {
+    font-weight: 300;
+  }
+}
 </style>
