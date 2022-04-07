@@ -5,5 +5,8 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   base: '/test-form/',
-  build: { outDir: './docs' }
+  build: { outDir: './docs' },
+  define: {
+    __VUE_PROD_DEVTOOLS__: true
+  }
 })
