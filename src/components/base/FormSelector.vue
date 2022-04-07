@@ -15,7 +15,7 @@
         </div>
       </template>
     </FormInput>
-    <div class="select" v-if="isVisible">
+    <div class="select" v-if="isVisible" @click="onSelectorClick">
       <div
         class="select__item"
         v-for="item in items"
@@ -44,6 +44,7 @@ export default {
     return {
       isVisible: false,
       selectedItem: null,
+      clicked: false,
     };
   },
 
@@ -71,9 +72,9 @@ export default {
   },
 
   methods: {
-    clickSelect(e) {
+    clickSelect() {
       this.isVisible = !this.isVisible;
-      e.stopPropagation();
+      this.clicked = true
     },
 
     onItemClick(item) {
@@ -101,8 +102,18 @@ export default {
     },
 
     onWindowClick() {
-      this.isVisible = false;
+      if(this.clicked === false ) {
+        this.isVisible = false;
+      }
+      
+      this.clicked = false
     },
+
+    onSelectorClick() {
+      if(this.multiple) {
+        this.clicked = true
+      }
+    }
   },
 
   computed: {
