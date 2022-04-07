@@ -63,9 +63,17 @@ export default {
     },
   },
 
+  mounted() {
+    window.addEventListener("click", this.onWindowClick);
+  },
+  beforeUnmount() {
+    window.removeEventListener("click", this.onWindowClick);
+  },
+
   methods: {
-    clickSelect() {
+    clickSelect(e) {
       this.isVisible = !this.isVisible;
+      e.stopPropagation();
     },
 
     onItemClick(item) {
@@ -90,6 +98,10 @@ export default {
       if (Array.isArray(this.selectedItem)) {
         return this.selectedItem.includes(item);
       }
+    },
+
+    onWindowClick() {
+      this.isVisible = false;
     },
   },
 
